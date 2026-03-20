@@ -11,37 +11,22 @@
     height: 100px;
     border: 1px solid black;
     border-radius: 10px;
-    & .color-box-text{
+    & .color-box-text {
       color: $text-color;
     }
-    &.base-color{
+    &.base-color {
       background-color: $base-color;
+    }
+    $i: 1;
+    @while $i <= 4 {
+      &.darken-#{$i} {
+        background-color: color.adjust($base-color, $lightness: -($i * 10%));
+      }
 
-    }
-    &.darken-1{
-      background-color: color.adjust($base-color, $lightness: -10%);
-    }
-    &.darken-2{
-      background-color: color.adjust($base-color, $lightness: -20%);
-    }
-    &.darken-3{
-      background-color: color.adjust($base-color, $lightness: -30%);
-    }
-    &.darken-4{
-      background-color: color.adjust($base-color, $lightness: -40%);
-    }
-    &.lighten-1{
-      background-color: color.adjust($base-color, $lightness: 10%);
-
-    }
-    &.lighten-2{
-      background-color: color.adjust($base-color, $lightness: 20%);
-    }
-    &.lighten-3{
-      background-color: color.adjust($base-color, $lightness: 30%);
-    }
-    &.lighten-4{
-      background-color: color.adjust($base-color, $lightness: 40%);
+      &.lighten-#{$i} {
+        background-color: color.adjust($base-color, $lightness: $i * 10%);
+      }
+      $i: $i + 1;
     }
   }
 }
